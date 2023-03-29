@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { createTodo } from "../features/todo";
+import { createTask } from "../features/Task";
 
 const TaskForm = () => {
   const dispatch = useDispatch();
   const [taskInput, setTaskInput] = useState("");
-  const handleChangTaskInput = (e) => setTaskInput(e.target.value);
+  const handleChangeTaskInput = (e) => setTaskInput(e.target.value);
   const addTask = (e) => {
     e?.preventDefault();
     if (!taskInput.trim()) return;
-    dispatch(createTodo(taskInput));
+    dispatch(createTask(taskInput));
     setTaskInput("");
   };
 
@@ -29,7 +29,7 @@ const TaskForm = () => {
           placeholder="Add todo"
           className="w-full outline-none focus:outline-none"
           value={taskInput}
-          onChange={handleChangTaskInput}
+          onChange={handleChangeTaskInput}
         />
       </div>
       <button

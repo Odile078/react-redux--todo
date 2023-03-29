@@ -1,9 +1,9 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import todoReducer from "./features/todo";
+import taskReducer from "./features/Task";
 const middleware = [...getDefaultMiddleware(), logger];
 const store = configureStore({
-  reducer: { todo: todoReducer },
+  reducer: { task: taskReducer },
   middleware,
 });
 export default store;
