@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { createTodo } from "../features/todo";
 
-const TaskForm = ({ tasks, setTasks, taskInput, setTaskInput }) => {
+const TaskForm = () => {
+  const dispatch = useDispatch();
+  const [taskInput, setTaskInput] = useState("");
   const handleChangTaskInput = (e) => setTaskInput(e.target.value);
   const addTask = (e) => {
     e?.preventDefault();
     if (!taskInput.trim()) return;
-    let taskArray = tasks.slice();
-    taskArray.push({ checked: false, value: taskInput });
-    setTasks(taskArray);
+    dispatch(createTodo(taskInput));
     setTaskInput("");
   };
 
@@ -17,7 +20,7 @@ const TaskForm = ({ tasks, setTasks, taskInput, setTaskInput }) => {
       onSubmit={addTask}
     >
       <div className="flex flex-1">
-        <label for="new task" className="sr-only">
+        <label htmlFor="new task" className="sr-only">
           To do task
         </label>
         <input
