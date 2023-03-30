@@ -6,7 +6,7 @@ import {
   markTaskDone,
   updateTask,
 } from "../features/Task";
-import { TbBallpen, TbBallpenOff, TbPencilOff, TbPencil } from "react-icons/tb";
+import { TbBallpen, TbBallpenOff } from "react-icons/tb";
 const TaskCard = ({ taskIndex, task }) => {
   const dispatch = useDispatch();
   const handleDelete = (selectedTask) => dispatch(deleteTask(selectedTask));
@@ -20,10 +20,10 @@ const TaskCard = ({ taskIndex, task }) => {
     dispatch(updateTask({ taskId: taskId, newValue: newValue }));
   };
   return (
-    <div className="flex gap-6 justify-between flex-wrap sm:flex-nowrap border-b border-gray-200 py-2">
-      <div className="flex gap-3">
+    <div className="flex gap-4 justify-between flex-wrap sm:flex-nowrap border-b border-gray-200 py-2 ">
+      <div className="flex-1 flex gap-2 w-4/5">
         {!task.isEditing && (
-          <div className="mb-[0.125rem] mr-4 inline-block min-h-[1.5rem] pl-[1.5rem]">
+          <div className="mb-[0.125rem] mr-2 inline-block min-h-[1.5rem] pl-[1.5rem]">
             <input
               type="checkbox"
               id={`checkbox${+1} ${taskIndex}`}
@@ -47,7 +47,7 @@ const TaskCard = ({ taskIndex, task }) => {
                 type="text"
                 id="task"
                 placeholder="Edit your task"
-                className="outline-none focus:outline-none break-words w-11/12"
+                className="outline-none focus:outline-none break-words w-11/12 border border-gray-200 p-2"
                 defaultValue={task.value}
                 onBlur={(e) => handleChangeTask(e, task.id)}
               />

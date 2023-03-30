@@ -16,7 +16,7 @@ const TaskForm = () => {
 
   return (
     <form
-      className="rounded-3xl  shadow-lg border-2 border-gray-300 flex py-4 px-10"
+      className="rounded-3xl shadow-lg border-2 border-gray-300 flex py-4 px-10"
       onSubmit={addTask}
     >
       <div className="flex flex-1">
