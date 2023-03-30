@@ -17,7 +17,7 @@ const MainContent = () => {
               ))
             ) : (
               <p className="font-bold text-3xl text-gray-600">
-                What are you to do tasks for today?
+                What are your to do tasks for today?
               </p>
             )}
           </div>
