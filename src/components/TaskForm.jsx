@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { createTask } from "../features/Task";
+import { createTask } from "../features/Tasks";
 
 const TaskForm = () => {
   const dispatch = useDispatch();
   const [taskInput, setTaskInput] = useState("");
-  const handleChangeTaskInput = (e) => setTaskInput(e.target.value);
-  const addTask = (e) => {
-    e?.preventDefault();
+  const handleChangeTaskInput = (event) => setTaskInput(event.target.value);
+  const addTask = (event) => {
+    event?.preventDefault();
     if (!taskInput.trim()) return;
     dispatch(createTask(taskInput));
     setTaskInput("");

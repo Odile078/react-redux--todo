@@ -5,7 +5,7 @@ import {
   enableEditing,
   markTaskDone,
   updateTask,
-} from "../features/Task";
+} from "../features/Tasks";
 import { TbBallpen, TbBallpenOff } from "react-icons/tb";
 const TaskCard = ({ taskIndex, task }) => {
   const dispatch = useDispatch();
@@ -14,8 +14,8 @@ const TaskCard = ({ taskIndex, task }) => {
   const handleMarkTaskDone = (selectedTaskId) =>
     dispatch(markTaskDone(selectedTaskId));
   const handleEnableEditing = (taskId) => dispatch(enableEditing(taskId));
-  const handleChangeTask = (e, taskId) => {
-    const newValue = e.target.value;
+  const handleChangeTask = (event, taskId) => {
+    const newValue = event.target.value;
     if (!newValue.trim()) return;
     dispatch(updateTask({ taskId: taskId, newValue: newValue }));
   };
@@ -49,7 +49,7 @@ const TaskCard = ({ taskIndex, task }) => {
                 placeholder="Edit your task"
                 className="outline-none focus:outline-none break-words w-11/12 border border-gray-200 p-2"
                 defaultValue={task.value}
-                onBlur={(e) => handleChangeTask(e, task.id)}
+                onBlur={(event) => handleChangeTask(event, task.id)}
               />
             </div>
           ) : (

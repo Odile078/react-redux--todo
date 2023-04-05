@@ -1,8 +1,8 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = [];
-export const taskSlice = createSlice({
-  name: "task",
+export const tasksSlice = createSlice({
+  name: "tasks",
   initialState: initialState,
   reducers: {
     createTask: (state, action) => {
@@ -15,37 +15,32 @@ export const taskSlice = createSlice({
     },
 
     updateTask: (state, action) => {
-      state = state.map((task, index) => {
+      return state.map((task) => {
         const { taskId, newValue } = action.payload;
-        console.log("taskId", taskId, "newValue:", newValue, action.payload);
         if (task.id === taskId) {
           const newTask = { ...task, value: newValue, isEditing: false };
           return newTask;
         } else return task;
       });
-      return state;
     },
     deleteTask: (state, action) => {
-      state = state.filter((task) => task.id != action.payload.id);
-      return state;
+      return state.filter((task) => task.id != action.payload.id);
     },
     markTaskDone: (state, action) => {
-      state = state.map((task, index) => {
+      return state.map((task) => {
         if (task.id === action.payload) {
           const newTask = { ...task, checked: !task.checked };
           return newTask;
         } else return task;
       });
-      return state;
     },
     enableEditing: (state, action) => {
-      state = state.map((task, index) => {
+      return (state = state.map((task) => {
         if (task.id === action.payload) {
           const newTask = { ...task, isEditing: !task.isEditing };
           return newTask;
         } else return task;
-      });
-      return state;
+      }));
     },
   },
 });
@@ -55,5 +50,5 @@ export const {
   updateTask,
   deleteTask,
   enableEditing,
-} = taskSlice.actions;
-export default taskSlice.reducer;
+} = tasksSlice.actions;
+export default tasksSlice.reducer;
